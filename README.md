@@ -1,97 +1,137 @@
 # Machine Learning Engineering Portfolio
 
-**Portfolio owner:** [Your full name]  
-**Location:** Kenya  
-**Focus:** Python · ML pipelines · model evaluation · data validation · inference
+*Portfolio owner:* Lui Kiplagat Mibey  
+*Location:* Kenya  
+*Focus:* Python · Machine Learning · Model Evaluation · Data Validation · AI Training
 
-> This repository is a practical, reproducible demonstration project. It is not a claim of production deployment or employment at an AI laboratory. Replace the profile placeholders and add only experience you can substantiate.
+## Project: Reproducible Machine Learning Pipeline
 
-## Project: Reproducible classification pipeline
+This project demonstrates an end-to-end machine learning workflow using Python and Scikit-learn.
 
-This project demonstrates an end-to-end tabular ML workflow using a generated dataset:
+The pipeline includes:
 
-1. Generate a deterministic dataset.
-2. Validate input features and labels.
-3. Split data reproducibly into train and test sets.
-4. Train a preprocessing + logistic-regression pipeline.
-5. Evaluate with accuracy, precision, recall, F1, ROC-AUC and a confusion matrix.
-6. Save the model and metrics as versionable artifacts.
-7. Load the saved model for batch inference.
-8. Run automated tests.
+1. Deterministic synthetic dataset generation.
+2. Input feature validation.
+3. Reproducible train/test splitting.
+4. Data preprocessing using StandardScaler.
+5. Classification using LogisticRegression.
+6. Model evaluation using multiple performance metrics.
+7. Model and metrics persistence.
+8. Batch inference through a command-line interface.
+9. Automated testing.
 
-### Engineering practices demonstrated
+## Technologies
 
-- Reproducible random seeds and deterministic data generation.
-- Separation of data, training, evaluation and inference code.
-- Input schema and missing-value checks.
-- Scikit-learn `Pipeline` to prevent preprocessing leakage.
-- Machine-readable evaluation reports.
-- Command-line interface and automated tests.
+- Python
+- Scikit-learn
+- NumPy
+- Pandas
+- Joblib
+- Pytest
+- Ruff
+- Git and GitHub
 
-## Quick start
+## Engineering Practices
+
+- Reproducible experiments using fixed random seeds.
+- Separation of data generation, training, evaluation and inference.
+- Input validation and missing-value checks.
+- Scikit-learn pipelines to prevent preprocessing leakage.
+- Automated testing and code-quality checks.
+- Model persistence and batch prediction.
+
+## Quick Start
 
 Requires Python 3.10 or newer.
 
-```bash
-python -m venv .venv
-# Windows:
-.venv\\Scripts\\activate
-# macOS/Linux:
-source .venv/bin/activate
+Create and activate a virtual environment:
 
-pip install -e ".[dev]"
-```
+bash
+py -m venv .venv
+.venv\Scripts\activate
 
-Train and evaluate:
 
-```bash
+Install dependencies:
+
+bash
+py -m pip install -e ".[dev]"
+
+
+Train the model:
+
+bash
 ml-portfolio train --output-dir artifacts
-```
 
-Run inference on a small example:
 
-```bash
-ml-portfolio predict --model artifacts/model.joblib --values 1.2,0.8,-0.4,2.1,0.5,1.0
-```
+Run batch inference:
 
-Run tests:
+bash
+ml-portfolio predict --model artifacts/model.joblib --values 0.1,0.2,0.3,0.4,0.5,0.6
 
-```bash
+
+Run automated tests:
+
+bash
 pytest
-```
 
-## Repository structure
 
-```text
-src/ml_portfolio/
-  data.py        deterministic dataset generation and validation
-  modeling.py   pipeline construction, training and evaluation
-  inference.py  model loading and prediction
-  cli.py         command-line interface
-tests/
-  test_pipeline.py
-docs/
-  architecture.md
-  project-notes.md
-```
+Run code-quality checks:
 
-## Results
+bash
+ruff check .
 
-Run the training command to create `artifacts/metrics.json` and `artifacts/model.joblib`. Metrics are generated locally from the fixed synthetic dataset; do not copy results into a job application without running the project yourself and checking the output.
 
-## Suggested extensions
+## Model Evaluation Results
 
-- Add cross-validation and hyperparameter search.
-- Compare a tree-based model against logistic regression.
-- Add data-drift checks and model monitoring.
-- Package the inference service with FastAPI.
-- Add a CI workflow that runs tests on every pull request.
-- Add experiment tracking and model version metadata.
+The current synthetic dataset produced the following evaluation results:
 
-## About the author
+| Metric | Result |
+|---|---:|
+| Accuracy | 82.08% |
+| Precision | 87.01% |
+| Recall | 67.00% |
+| F1 Score | 75.71% |
+| ROC-AUC | 85.78% |
 
-[Write 3–5 truthful sentences about your education, AI evaluation/annotation experience, Python experience and relevant projects. Do not list qualifications or employment that you cannot verify.]
+*Test status:* 4 automated tests passed.
+
+These results come from a synthetic dataset and should not be interpreted as evidence of real-world model performance.
+
+## Repository Structure
+
+text
+ml-engineering-portfolio/
+├── docs/
+│   ├── architecture.md
+│   └── project-notes.md
+├── src/
+│   └── ml_portfolio/
+│       ├── __init__.py
+│       ├── cli.py
+│       ├── data.py
+│       ├── inference.py
+│       └── modeling.py
+├── tests/
+│   └── test_pipeline.py
+├── .gitignore
+├── LICENSE
+├── README.md
+└── pyproject.toml
+
+
+## About the Author
+
+I am Lui Kiplagat Mibey, based in Kenya, with an interest in artificial intelligence, machine learning engineering, and data quality. I am developing practical skills in Python, machine learning workflows, model evaluation, and AI training. This portfolio showcases my independent technical projects and commitment to building reliable, reproducible machine learning solutions.
+
+## Future Improvements
+
+- Cross-validation and hyperparameter tuning.
+- Comparison of multiple classification algorithms.
+- Data drift detection and model monitoring.
+- API-based model deployment using FastAPI.
+- Automated continuous integration with GitHub Actions.
+- Experiment tracking and model versioning.
 
 ## License
 
-MIT. See `LICENSE`.
+This project is licensed under the MIT License.
